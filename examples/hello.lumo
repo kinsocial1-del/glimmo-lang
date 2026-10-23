@@ -1,0 +1,8 @@
+# My first Lumo program!
+say "Hello, world!"
+
+set name to ask "What's your name?"
+say "Nice to meet you, {name}!"
+
+set age to ask "How old are you?"
+say "Next year you'll be {age + 1}."

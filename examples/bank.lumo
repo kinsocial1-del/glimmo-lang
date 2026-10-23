@@ -1,0 +1,37 @@
+# A tiny bank: functions, records, problems and checks.
+
+set account to {owner: "Ada", balance: 100}
+
+make deposit with amount
+    if amount is at most 0 then fail "You can only deposit more than 0."
+    add amount to account.balance
+end
+
+make withdraw with amount
+    if amount is more than account.balance
+        fail "Not enough money. You only have {account.balance}."
+    end
+    set account.balance to account.balance - amount
+end
+
+deposit(50)
+withdraw(30)
+say "{account.owner} has {account.balance} coins."
+
+# 'try' catches a problem so the program can keep going.
+try
+    withdraw(1000)
+otherwise
+    say "That didn't work: {problem}"
+end
+
+# 'check' makes sure things are true. If one isn't, Lumo says exactly what went wrong.
+check account.balance is 120
+check account contains "owner"
+say "All checks passed!"
+
+# Functions can be handed to other functions.
+make with_fee with amount
+    give back amount + 2
+end
+say "Prices with fees:", map([10, 20, 30], with_fee)

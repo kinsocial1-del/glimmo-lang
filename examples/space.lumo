@@ -1,0 +1,85 @@
+# Space Defender! Move with the arrow keys and shoot with space.
+# On a phone or tablet, use the buttons under the screen.
+
+screen(600, 500)
+
+make kind Laser with x, y
+    make move
+        add -10 to y
+    end
+    make show
+        rectangle(x - 2, y - 12, 4, 16, "aqua")
+    end
+end
+
+make kind Alien with x, y, speed
+    make move
+        add speed to y
+    end
+    make show
+        sprite("👾", x, y, 40)
+    end
+end
+
+set ship_x to 300
+set lasers to []
+set aliens to []
+set score to 0
+set playing to true
+set frames to 0
+
+make key_pressed with key
+    if key is "space"
+        if playing
+            add Laser(ship_x, 440) to lasers
+            beep(990, 0.04)
+        otherwise
+            set aliens to []
+            set lasers to []
+            set score to 0
+            set playing to true
+        end
+    end
+end
+
+make draw
+    background("black")
+
+    if not playing
+        draw_text("The aliens landed!", 150, 190, 36, "white")
+        draw_text("Score: {score}. Press space to try again.", 120, 250, 22, "light gray")
+        give back nothing
+    end
+
+    if key_down("left") then add -6 to ship_x
+    if key_down("right") then add 6 to ship_x
+    set ship_x to max(30, min(570, ship_x))
+
+    # Aliens come faster as your score goes up
+    add 1 to frames
+    if frames mod 45 is 0 then add Alien(random(30, 570), -20, 1 + score / 10) to aliens
+
+    for each shot in lasers
+        shot.move()
+        shot.show()
+    end
+    set lasers to filter(lasers, l gives l.y is more than -20)
+
+    set survivors to []
+    for each invader in aliens
+        invader.move()
+        if any(lasers, l gives distance(l.x, l.y, invader.x, invader.y) is less than 24)
+            add 1 to score
+            beep(220, 0.08)
+            set lasers to filter(lasers, l gives distance(l.x, l.y, invader.x, invader.y) is at least 24)
+        otherwise
+            add invader to survivors
+            invader.show()
+            if invader.y is more than 470 then set playing to false
+        end
+    end
+    set aliens to survivors
+
+    sprite("🚀", ship_x, 460, 44)
+    draw_text("Score: {score}", 14, 12, 22, "white")
+end

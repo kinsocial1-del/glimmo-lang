@@ -1,0 +1,25 @@
+# Guess the secret number
+set secret to random(1, 100)
+set tries to 0
+
+say "I'm thinking of a number from 1 to 100."
+
+repeat forever
+    set guess to ask "Your guess:"
+
+    if type(guess) is not "number"
+        say "Please type a number."
+        skip
+    end
+
+    add 1 to tries
+
+    if guess is secret
+        say "You got it in {tries} tries!"
+        stop
+    else if guess is less than secret
+        say "Higher!"
+    else
+        say "Lower!"
+    end
+end

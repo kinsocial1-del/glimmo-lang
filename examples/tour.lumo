@@ -1,0 +1,83 @@
+# A quick tour of everything Lumo can do.
+
+# ---- Saying things ----
+say "Welcome to Lumo!"
+say "You can say", 3, "things at once"
+
+# ---- Variables ----
+set score to 10
+add 5 to score
+say "Score: {score}"
+
+# Math that just works (no 0.30000000000000004 here)
+say "0.1 + 0.2 is {0.1 + 0.2}"
+say 2 ^ 10, 17 mod 5, 7 / 2
+
+# ---- Making decisions ----
+if score is more than 12
+    say "Great score!"
+end
+
+if score is even then say "Your score is even."
+
+set answer to "YES"
+if answer is "yes"
+    say "Lumo doesn't care about capital letters."
+end
+
+# ---- Lists ----
+set fruits to ["apple", "banana"]
+add "cherry" to fruits
+say fruits
+say "There are {length(fruits)} fruits. The first is {fruits[1]}, the last is {fruits.last}."
+
+for each fruit in fruits
+    say "I like {fruit}s"
+end
+
+if fruits contains "banana" then say "Bananas are in there!"
+remove "banana" from fruits
+say sort(["pear", "fig", "kiwi"])
+
+# ---- Records ----
+set pet to {name: "Biscuit", kind: "dog", age: 3}
+say "{pet.name} is a {pet.age} year old {pet.kind}."
+set pet.age to 4
+say pet
+
+# ---- Loops ----
+repeat 3 times
+    say "Hip hip hooray!"
+end
+
+count i from 10 to 0 by -5
+    say "Countdown: {i}"
+end
+
+set n to 1
+while n is less than 100
+    set n to n * 2
+end
+say "First power of two over 100: {n}"
+
+# ---- Functions ----
+make greet with person
+    give back "Hello, {person}!"
+end
+
+make area with width and height
+    give back width * height
+end
+
+make factorial with n
+    if n is at most 1
+        give back 1
+    end
+    give back n * factorial(n - 1)
+end
+
+say greet("Ada")
+say "A 3 by 4 box has area {area(3, 4)}"
+say "10! is {factorial(10)}"
+
+say "The tour is over. Have fun!"

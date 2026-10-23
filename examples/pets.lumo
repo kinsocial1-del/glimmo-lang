@@ -1,0 +1,34 @@
+# Kinds: a recipe for making things that have their own data and actions.
+
+make kind Pet with name, animal
+    set hunger to 5
+    set tricks to []
+
+    make feed
+        set hunger to max(0, hunger - 3)
+        say "{name} munches happily."
+    end
+
+    make learn with trick
+        add trick to tricks
+        say "{name} learned to {trick}!"
+    end
+
+    make describe
+        set mood to "happy"
+        if hunger is more than 6 then set mood to "hungry"
+        give back "{name} the {animal} is {mood} and knows {length(tricks)} tricks."
+    end
+end
+
+set rex to Pet("Rex", "dog")
+set tom to Pet("Tom", "cat")
+
+rex.learn("sit")
+rex.learn("roll over")
+tom.feed()
+set tom.hunger to 9
+
+say rex.describe()
+say tom.describe()
+say rex

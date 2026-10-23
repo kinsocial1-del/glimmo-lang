@@ -1,0 +1,74 @@
+# Catch the falling stars!
+# Move the basket with the left and right arrow keys.
+# Miss 3 stars and the game is over. Press space to play again.
+# Your best score is remembered, even after you close the page.
+
+screen(600, 450)
+
+set basket_x to 300
+set stars to []
+set score to 0
+set lives to 3
+set playing to true
+set frames to 0
+set best to recall("catch_best", 0)
+
+make new_star
+    give back {x: random(30, 570), y: -20, speed: random(3, 6)}
+end
+
+make key_pressed with key
+    if key is "space" and not playing
+        set stars to []
+        set score to 0
+        set lives to 3
+        set playing to true
+    end
+end
+
+make draw
+    background("midnight blue")
+
+    if not playing
+        draw_text("Game over!", 190, 150, 48, "white")
+        draw_text("You caught {score} stars. Press space to play again.", 75, 225, 22, "light gray")
+        draw_text("Best ever: {best}", 230, 265, 22, "light gray")
+        give back nothing
+    end
+
+    # Move the basket, but keep it on the screen
+    if key_down("left") then set basket_x to basket_x - 7
+    if key_down("right") then set basket_x to basket_x + 7
+    set basket_x to max(40, min(560, basket_x))
+
+    # A new star about every two thirds of a second
+    add 1 to frames
+    if frames mod 40 is 0 then add new_star() to stars
+
+    set still_falling to []
+    for each star in stars
+        set star.y to star.y + star.speed
+        if distance(star.x, star.y, basket_x, 400) is less than 40
+            add 1 to score
+            beep(880, 0.05)
+        else if star.y is more than 470
+            add -1 to lives
+            beep(220, 0.2)
+            if lives is 0
+                set playing to false
+                if score is more than best
+                    set best to score
+                    remember("catch_best", best)
+                end
+            end
+        otherwise
+            add star to still_falling
+            sprite("⭐", star.x, star.y, 32)
+        end
+    end
+    set stars to still_falling
+
+    sprite("🧺", basket_x, 400, 56)
+    draw_text("Score: {score}", 16, 12, 22, "white")
+    draw_text("Lives: " + "❤️" * lives, 430, 12, 22, "white")
+end

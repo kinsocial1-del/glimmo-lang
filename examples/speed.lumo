@@ -1,0 +1,27 @@
+# How fast is Lumo? Lumo turns your program into JavaScript before running it.
+
+make fib with n
+    if n is less than 2 then give back n
+    give back fib(n - 1) + fib(n - 2)
+end
+
+set start to now()
+say "fib(27) is {fib(27)}"
+say "That took {round(now() - start, 3)} seconds and about 630,000 function calls."
+
+set start to now()
+set primes to 0
+count n from 2 to 100000
+    set is_prime to true
+    set d to 2
+    while d * d is at most n
+        if n mod d is 0
+            set is_prime to false
+            stop
+        end
+        add 1 to d
+    end
+    if is_prime then add 1 to primes
+end
+say "There are {primes} prime numbers below 100,000."
+say "Finding them took {round(now() - start, 3)} seconds."

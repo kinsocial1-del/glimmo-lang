@@ -1,0 +1,27 @@
+# A picture made of shapes.
+# Positions are measured from the top-left corner: x goes right, y goes down.
+
+screen(600, 400)
+background("sky blue")
+
+# The sun, and some grass
+circle(510, 80, 50, "gold")
+rectangle(0, 300, 600, 100, "forest green")
+
+# A house
+rectangle(150, 180, 200, 140, "firebrick")
+triangle(130, 180, 370, 180, 250, 90, "saddle brown")
+rectangle(225, 250, 50, 70, "saddle brown")
+rectangle(170, 210, 40, 40, "light yellow")
+rectangle(290, 210, 40, 40, "light yellow")
+
+# A tree
+rectangle(450, 220, 24, 90, "sienna")
+circle(462, 200, 45, "green")
+
+# Any emoji can be a picture
+sprite("🐦", 90, 110, 40)
+sprite("🌷", 60, 320, 36)
+sprite("🌷", 110, 330, 36)
+
+draw_text("Home sweet home", 20, 20, 28, "white")

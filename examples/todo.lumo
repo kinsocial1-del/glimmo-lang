@@ -1,0 +1,52 @@
+# A to-do list that remembers your tasks in a file.
+#
+#   lumo examples/todo.lumo add Buy milk
+#   lumo examples/todo.lumo list
+#   lumo examples/todo.lumo done 1
+
+set save_file to "todo.json"
+
+make load_tasks
+    if file_exists(save_file) then give back from_json(read_file(save_file))
+    give back []
+end
+
+make save_tasks with tasks
+    write_file(save_file, to_json(tasks))
+end
+
+make show_tasks with tasks
+    if tasks is empty
+        say "Nothing to do! Add a task with: add Buy milk"
+        give back nothing
+    end
+    count i from 1 to length(tasks)
+        set box to "[ ]"
+        if tasks[i].done then set box to "[x]"
+        say "{i}. {box} {tasks[i].text}"
+    end
+end
+
+set tasks to load_tasks()
+set command to "list"
+if arguments is not empty then set command to arguments[1]
+
+if command is "add" and length(arguments) is at least 2
+    set task_text to join(slice(arguments, 2), " ")
+    add {text: task_text, done: false} to tasks
+    save_tasks(tasks)
+    say "Added: {task_text}"
+else if command is "done" and length(arguments) is 2
+    set n to arguments[2]
+    if type(n) is not "number" or n is less than 1 or n is more than length(tasks)
+        say "There's no task number {n}."
+    otherwise
+        set tasks[n].done to true
+        save_tasks(tasks)
+        say "Nice work! Finished: {tasks[n].text}"
+    end
+else if command is "list"
+    show_tasks(tasks)
+otherwise
+    say "I know these commands: add, done, list"
+end

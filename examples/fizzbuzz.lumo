@@ -1,0 +1,12 @@
+# The classic FizzBuzz puzzle
+count n from 1 to 20
+    if n mod 15 is 0
+        say "FizzBuzz"
+    else if n mod 3 is 0
+        say "Fizz"
+    else if n mod 5 is 0
+        say "Buzz"
+    else
+        say n
+    end
+end

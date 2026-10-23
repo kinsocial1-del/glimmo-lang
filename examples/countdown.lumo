@@ -1,0 +1,21 @@
+# Timers: 'every' runs a function again and again, and 'after' runs one once, later.
+# The rest of the program keeps going while they wait.
+
+set seconds_left to 5
+
+make tick
+    say "{seconds_left}..."
+    add -1 to seconds_left
+    if seconds_left is 0
+        cancel(countdown)
+        say "Liftoff! 🚀"
+    end
+end
+
+make halfway
+    say "(Halfway there!)"
+end
+
+set countdown to every(1, tick)
+after(2.5, halfway)
+say "Countdown starting!"

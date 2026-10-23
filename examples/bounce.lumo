@@ -1,0 +1,31 @@
+# A bouncing ball. Lumo runs 'draw' 60 times a second,
+# so changing x and y a little each time makes the ball move.
+# Click the screen to change its color.
+
+screen(600, 400)
+
+set x to 300
+set y to 200
+set speed_x to 4
+set speed_y to 3
+set size to 25
+set colors to ["orange", "hot pink", "lime", "aqua", "yellow"]
+set color to 1
+
+make draw
+    background("midnight blue")
+
+    set x to x + speed_x
+    set y to y + speed_y
+    if x is less than size or x is more than 600 - size then set speed_x to -speed_x
+    if y is less than size or y is more than 400 - size then set speed_y to -speed_y
+
+    circle(x, y, size, colors[color])
+    draw_text("Click to change the color", 16, 14, 20, "white")
+end
+
+make clicked
+    add 1 to color
+    if color is more than length(colors) then set color to 1
+    beep(660, 0.05)
+end
