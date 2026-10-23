@@ -1,25 +1,27 @@
-# Lumo
+# Glimmo
 
-**Lumo is a programming language that reads like plain English and explains its own mistakes.** It is built for people writing their first program, and it has the features experienced coders expect.
+**Glimmo is a programming language that reads like plain English and explains its own mistakes.** It is built for people writing their first program, and it has the features experienced coders expect.
+
+Glimmo was called Lumo until October 2026. Programs saved as `.lumo` files still run.
 
 ```
 set name to ask "What's your name?"
 say "Hello, {name}!"
 
 repeat 3 times
-    say "Lumo is fun!"
+    say "Glimmo is fun!"
 end
 ```
 
-**Try it in your browser at [lumo-lang.vercel.app](https://lumo-lang.vercel.app).** Nothing to install. The playground has 10 short lessons for complete beginners, every example, a Variables tab that shows every value as your program runs, a Tidy button, and a Share button that makes a link to your program, so you can post your games anywhere.
+**Try it in your browser at [glimmo-lang.vercel.app](https://glimmo-lang.vercel.app).** Nothing to install. The playground has 10 short lessons for complete beginners, every example, a Variables tab that shows every value as your program runs, a Tidy button, and a Share button that makes a link to your program, so you can post your games anywhere.
 
-## Why Lumo?
+## Why Glimmo?
 
 - **Reads like English.** `if score is more than 10`, `add "apple" to fruits`, `repeat 3 times`, `count i from 1 to 10`.
-- **Errors that explain themselves.** Lumo names the line, points at the exact spot, says what's wrong in plain words, and often guesses the fix:
+- **Errors that explain themselves.** Glimmo names the line, points at the exact spot, says what's wrong in plain words, and often guesses the fix:
 
   ```
-  Oops! There's a problem on line 3 of mistakes.lumo:
+  Oops! There's a problem on line 3 of mistakes.glimmo:
 
     3 | say "Hi " + nmae
                     ^
@@ -28,20 +30,20 @@ end
     Hint: Did you mean 'name'?
   ```
 
-  Habits from other languages get a friendly nudge too. Writing `print` tells you Lumo uses `say`, and writing `def` tells you about `make`.
+  Habits from other languages get a friendly nudge too. Writing `print` tells you Glimmo uses `say`, and writing `def` tells you about `make`.
 - **Math that does what you expect.** `0.1 + 0.2` is `0.3`, not `0.30000000000000004`, and comparisons ignore that rounding noise too.
 - **Asking a question is one line.** `set age to ask "Age?"` gives you a number if someone types a number, so there's no `int(input(...))` to remember.
 - **Counts from 1, like people do.** `fruits[1]` is the first item and `fruits[-1]` is the last.
 - **Capital letters don't trip you up.** `Say` and `say` are the same, and `"YES" is "yes"` is true. Use `is exactly` when capitals matter.
-- **Fast.** Lumo turns each program into JavaScript before running it, so it runs on the same engine as Chrome and Node.js. `fib(30)`, which makes 1.3 million function calls, takes about 0.02 seconds.
-- **Make games.** Draw shapes and emoji, move them with the keyboard and mouse, and play sounds. `lumo build` turns a game into one web page you can send to anyone.
+- **Fast.** Glimmo turns each program into JavaScript before running it, so it runs on the same engine as Chrome and Node.js. `fib(30)`, which makes 1.3 million function calls, takes about 0.02 seconds.
+- **Make games.** Draw shapes and emoji, move them with the keyboard and mouse, and play sounds. `glimmo build` turns a game into one web page you can send to anyone.
 - **Ready for real projects.** Read and write files, work with JSON data, download from the web, run a website, and take command-line inputs. Error handling (`try` / `otherwise` / `fail`), built-in tests (`check`), closures, and splitting code into files (`use`) are all built in.
-- **Easy to share.** `lumo build app.lumo` makes one `app.js` file that runs on any computer with Node.js, without installing Lumo.
+- **Easy to share.** `glimmo build app.glimmo` makes one `app.js` file that runs on any computer with Node.js, without installing Glimmo.
 - **Tiny and portable.** The whole language is one JavaScript file with no dependencies. The same file runs in a terminal and in a web page.
 
-## Lumo next to Python
+## Glimmo next to Python
 
-| Task | Lumo | Python |
+| Task | Glimmo | Python |
 |---|---|---|
 | Ask for a number | `set age to ask "Age?"` | `age = int(input("Age? "))` |
 | Show a value in text | `say "Hi {name}"` | `print(f"Hi {name}")` |
@@ -55,7 +57,7 @@ end
 
 ## Getting started
 
-Open the **[Lumo playground](https://lumo-lang.vercel.app)**, type a program and press Run. It works on computers, tablets and phones.
+Open the **[Glimmo playground](https://glimmo-lang.vercel.app)**, type a program and press Run. It works on computers, tablets and phones.
 
 ### Examples
 
@@ -63,21 +65,21 @@ These programs are in the [`examples`](examples) folder, and every one of them i
 
 | File | What it shows |
 |---|---|
-| `examples/hello.lumo` | Asking questions and showing answers |
-| `examples/guess.lumo` | A number guessing game with loops and decisions |
-| `examples/fizzbuzz.lumo` | The classic FizzBuzz puzzle |
-| `examples/bank.lumo` | Records, functions, `try`, `fail`, `check` and `map` |
-| `examples/todo.lumo` | A to-do app that saves tasks in a file: `lumo examples/todo.lumo add Buy milk` |
-| `examples/website.lumo` | A small website. Run it and open http://localhost:8080 |
-| `examples/speed.lumo` | How fast Lumo is |
-| `examples/drawing.lumo` | A picture made of shapes and emoji |
-| `examples/bounce.lumo` | An animation: a bouncing ball you click to recolor |
-| `examples/catch.lumo` | A complete game: catch falling stars with the arrow keys |
-| `examples/space.lumo` | A space shooter built with kinds, with phone buttons |
-| `examples/pets.lumo` | Kinds: pets with their own data and actions |
-| `examples/countdown.lumo` | Timers: a countdown with `every` and `after` |
-| `examples/tour.lumo` | Every feature, one after another |
-| `examples/mistakes.lumo` | How Lumo explains a mistake |
+| `examples/hello.glimmo` | Asking questions and showing answers |
+| `examples/guess.glimmo` | A number guessing game with loops and decisions |
+| `examples/fizzbuzz.glimmo` | The classic FizzBuzz puzzle |
+| `examples/bank.glimmo` | Records, functions, `try`, `fail`, `check` and `map` |
+| `examples/todo.glimmo` | A to-do app that saves tasks in a file: `glimmo examples/todo.glimmo add Buy milk` |
+| `examples/website.glimmo` | A small website. Run it and open http://localhost:8080 |
+| `examples/speed.glimmo` | How fast Glimmo is |
+| `examples/drawing.glimmo` | A picture made of shapes and emoji |
+| `examples/bounce.glimmo` | An animation: a bouncing ball you click to recolor |
+| `examples/catch.glimmo` | A complete game: catch falling stars with the arrow keys |
+| `examples/space.glimmo` | A space shooter built with kinds, with phone buttons |
+| `examples/pets.glimmo` | Kinds: pets with their own data and actions |
+| `examples/countdown.glimmo` | Timers: a countdown with `every` and `after` |
+| `examples/tour.glimmo` | Every feature, one after another |
+| `examples/mistakes.glimmo` | How Glimmo explains a mistake |
 
 To write your own program, open the playground and start typing.
 
@@ -100,7 +102,7 @@ set name to "Sam"
 say "Hi {name}, 2 + 2 is {2 + 2}"
 ```
 
-Anything after a `#` is a note for humans, and Lumo skips it.
+Anything after a `#` is a note for humans, and Glimmo skips it.
 
 ### Variables
 
@@ -319,7 +321,7 @@ say rex                  # pet {name: "Rex", animal: "dog", hunger: 2, tricks: [
 
 Everything a kind sets becomes a field of the thing it makes, and the kind's own `make` blocks can read and change those fields. Inside them, `me` is the whole thing. `type(rex)` gives `"pet"`.
 
-**One name, one meaning.** Lumo doesn't care about capital letters, so `Pet` and `pet` are the same name. Once you make a function or kind, its name can't be used for anything else, so `set pet to Pet("Rex")` gives a friendly error. Use names like `my_pet`, or `for each p in pets`.
+**One name, one meaning.** Glimmo doesn't care about capital letters, so `Pet` and `pet` are the same name. Once you make a function or kind, its name can't be used for anything else, so `set pet to Pet("Rex")` gives a friendly error. Use names like `my_pet`, or `for each p in pets`.
 
 ### Handling problems
 
@@ -340,7 +342,7 @@ end
 
 ### Testing with check
 
-`check` makes sure something is true. If it isn't, Lumo stops and shows both sides:
+`check` makes sure something is true. If it isn't, Glimmo stops and shows both sides:
 
 ```
 check area(3, 4) is 12
@@ -353,20 +355,20 @@ check fruits contains "apple"
 
 ### Using other files
 
-`use` runs another Lumo file once, so you can share functions between programs:
+`use` runs another Glimmo file once, so you can share functions between programs:
 
 ```
-use "helpers.lumo"
+use "helpers.glimmo"
 say shout("hi")
 ```
 
-`use` also loads Lumo files from the web, which is how people share libraries. Put a `.lumo` file online (for example on GitHub), and anyone can use it in one line:
+`use` also loads Glimmo files from the web, which is how people share libraries. Put a `.glimmo` file online (for example on GitHub), and anyone can use it in one line:
 
 ```
-use "https://raw.githubusercontent.com/someone/lumo-tools/main/tools.lumo"
+use "https://raw.githubusercontent.com/someone/glimmo-tools/main/tools.glimmo"
 ```
 
-A file loaded from the web can `use` other files next to it, written as plain names like `use "more.lumo"`. Only load code from people you trust, because it runs just like your own code. This works in the playground too.
+A file loaded from the web can `use` other files next to it, written as plain names like `use "more.glimmo"`. Only load code from people you trust, because it runs just like your own code. This works in the playground too.
 
 ### Remembering things
 
@@ -383,7 +385,7 @@ end
 
 `recall` gives back the second value (or `nothing`) when nothing was remembered yet, and `forget("best_score")` throws a value away. Lists and records can be remembered too.
 
-On a website, values are kept in that browser, and every Lumo program on the same site shares them, so pick names that belong to your program, like `"catch_best"`. On a computer, they're kept in a file called `memory.json`, in a `.lumo` folder inside your user folder.
+On a website, values are kept in that browser, and every Glimmo program on the same site shares them, so pick names that belong to your program, like `"catch_best"`. On a computer, they're kept in a file called `memory.json`, in a `.glimmo` folder inside your user folder.
 
 ### Timers
 
@@ -453,7 +455,7 @@ say "Node.js has {answer.stargazers_count} stars"
 ```
 make home with request
     if request.path is "/"
-        give back "<h1>Hello from Lumo!</h1>"
+        give back "<h1>Hello from Glimmo!</h1>"
     end
     give back {status: 404, body: "No page here"}
 end
@@ -463,7 +465,7 @@ serve(home, 8080)
 
 ### Drawing
 
-Drawing happens on a screen. In the playground it appears above the output. On your computer, `lumo picture.lumo` opens it in your web browser.
+Drawing happens on a screen. In the playground it appears above the output. On your computer, `glimmo picture.glimmo` opens it in your web browser.
 
 Positions are measured from the top-left corner: `x` goes right and `y` goes down.
 
@@ -478,7 +480,7 @@ draw_text("Hello!", 20, 20, 28, "white") # text, left, top, size, color
 sprite("🐱", 300, 200, 64)               # any emoji, centered, with a size
 ```
 
-Colors can be names like `"red"` or `"sky blue"`, codes like `"#ff8800"`, or `rgb(255, 136, 0)`. A color Lumo doesn't know gets a friendly error.
+Colors can be names like `"red"` or `"sky blue"`, codes like `"#ff8800"`, or `rgb(255, 136, 0)`. A color Glimmo doesn't know gets a friendly error.
 
 Pictures work too. Keep the file in the same folder as your program, or use a web address:
 
@@ -487,13 +489,13 @@ picture("cat.png", 300, 200)          # centered at 300, 200, at its own size
 picture("cat.png", 300, 200, 120)     # 120 wide (the height keeps its shape)
 ```
 
-In the playground, use the **Add picture** button first. When you `lumo build` a game, its pictures go inside the `.html` file, so it still works when you send it to someone.
+In the playground, use the **Add picture** button first. When you `glimmo build` a game, its pictures go inside the `.html` file, so it still works when you send it to someone.
 
 ### Games
 
-A game sets things up once at the top. Then Lumo runs three functions, if you make them:
+A game sets things up once at the top. Then Glimmo runs three functions, if you make them:
 
-| Make this | And Lumo runs it |
+| Make this | And Glimmo runs it |
 |---|---|
 | `make draw` | 60 times a second, on every screen. Clear the screen and draw the next picture here |
 | `make key_pressed with key` | each time a key is pressed. `key` is `"left"`, `"right"`, `"up"`, `"down"`, `"space"`, `"enter"`, or a letter like `"a"` |
@@ -522,9 +524,9 @@ make draw
 end
 ```
 
-**Phones and tablets.** On a touch screen, a game shows big on-screen buttons for the keys it uses, like ◀ ▶ and Space. You don't need to do anything: Lumo works out which keys your game listens for.
+**Phones and tablets.** On a touch screen, a game shows big on-screen buttons for the keys it uses, like ◀ ▶ and Space. You don't need to do anything: Glimmo works out which keys your game listens for.
 
-To share a game, run `lumo build mygame.lumo`. You get `mygame.html`, one file that anyone can open in a browser to play, with nothing to install.
+To share a game, run `glimmo build mygame.glimmo`. You get `mygame.html`, one file that anyone can open in a browser to play, with nothing to install.
 
 ### Long text
 
@@ -544,7 +546,7 @@ end
 Anything typed after the file name goes into the list `arguments`. Inputs that look like numbers become numbers.
 
 ```
-# lumo greet.lumo Ada 3
+# glimmo greet.glimmo Ada 3
 repeat arguments[2] times
     say "Hi {arguments[1]}!"
 end
@@ -583,7 +585,7 @@ end
 | `wait(seconds)` | pause (on a computer; in a web page, use timers or a game's `draw` instead) |
 | `clear()` | wipe the screen |
 
-Files and `serve` work when Lumo runs on a computer, but not in the browser playground. `fetch` works in both, but in a web page only for websites that allow other pages to read them (many data services do). Drawing and games work in a browser, so on a computer `lumo` opens them in yours.
+Files and `serve` work when Glimmo runs on a computer, but not in the browser playground. `fetch` works in both, but in a web page only for websites that allow other pages to read them (many data services do). Drawing and games work in a browser, so on a computer `glimmo` opens them in yours.
 
 ### Special words
 
@@ -594,6 +596,6 @@ These words are part of the language, so they can't be used as names:
 
 ## About this repository
 
-This repository holds Lumo's guide and example programs. The Lumo language itself is not open source.
+This repository holds Glimmo's guide and example programs. The Glimmo language itself is not open source.
 
 Copyright © 2026 kinsocial1. All rights reserved. See [LICENSE](LICENSE).

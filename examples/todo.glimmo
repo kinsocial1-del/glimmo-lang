@@ -1,8 +1,8 @@
 # A to-do list that remembers your tasks in a file.
 #
-#   lumo examples/todo.lumo add Buy milk
-#   lumo examples/todo.lumo list
-#   lumo examples/todo.lumo done 1
+#   glimmo examples/todo.glimmo add Buy milk
+#   glimmo examples/todo.glimmo list
+#   glimmo examples/todo.glimmo done 1
 
 set save_file to "todo.json"
 

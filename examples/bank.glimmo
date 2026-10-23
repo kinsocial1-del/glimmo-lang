@@ -25,7 +25,7 @@ otherwise
     say "That didn't work: {problem}"
 end
 
-# 'check' makes sure things are true. If one isn't, Lumo says exactly what went wrong.
+# 'check' makes sure things are true. If one isn't, Glimmo says exactly what went wrong.
 check account.balance is 120
 check account contains "owner"
 say "All checks passed!"

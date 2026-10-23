@@ -1,7 +1,7 @@
-# A quick tour of everything Lumo can do.
+# A quick tour of everything Glimmo can do.
 
 # ---- Saying things ----
-say "Welcome to Lumo!"
+say "Welcome to Glimmo!"
 say "You can say", 3, "things at once"
 
 # ---- Variables ----
@@ -22,7 +22,7 @@ if score is even then say "Your score is even."
 
 set answer to "YES"
 if answer is "yes"
-    say "Lumo doesn't care about capital letters."
+    say "Glimmo doesn't care about capital letters."
 end
 
 # ---- Lists ----

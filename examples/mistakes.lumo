@@ -1,3 +1,0 @@
-# Lumo explains mistakes in plain words. Try running this!
-set name to "Sam"
-say "Hi " + nmae

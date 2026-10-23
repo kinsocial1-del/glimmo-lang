@@ -1,4 +1,4 @@
-# How fast is Lumo? Lumo turns your program into JavaScript before running it.
+# How fast is Glimmo? Glimmo turns your program into JavaScript before running it.
 
 make fib with n
     if n is less than 2 then give back n

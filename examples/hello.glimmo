@@ -1,4 +1,4 @@
-# My first Lumo program!
+# My first Glimmo program!
 say "Hello, world!"
 
 set name to ask "What's your name?"

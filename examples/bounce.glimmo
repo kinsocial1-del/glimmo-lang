@@ -1,4 +1,4 @@
-# A bouncing ball. Lumo runs 'draw' 60 times a second,
+# A bouncing ball. Glimmo runs 'draw' 60 times a second,
 # so changing x and y a little each time makes the ball move.
 # Click the screen to change its color.
 
