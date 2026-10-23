@@ -597,7 +597,8 @@ end
 | `starts_with(t, s)`, `ends_with(t, s)` | check the start or end of text |
 | `number(x)`, `text(x)` | change a value's kind |
 | `round(n, places)`, `floor(n)`, `ceil(n)`, `abs(n)`, `sqrt(n)` | number tools |
-| `random(6)`, `random(1, 100)`, `random(list)` | random numbers or picks |
+| `random(6)`, `random(1, 100)`, `random(list)` | random numbers, or a random item from a list |
+| `shuffle(x)` | the same items, or letters, in a random order: `shuffle(["A", "K", "Q"])` |
 | `min(...)`, `max(...)`, `sum(list)`, `average(list)` | number lists |
 | `sin(d)`, `cos(d)`, `tan(d)`, `pi` | angles, in degrees |
 | `sort(list)`, `reverse(x)`, `unique(list)`, `range(1, 5)`, `find(list, x)` | list tools |
