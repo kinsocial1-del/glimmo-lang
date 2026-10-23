@@ -79,7 +79,7 @@ These programs are in the [`examples`](examples) folder, and every one of them i
 | `examples/tour.lumo` | Every feature, one after another |
 | `examples/mistakes.lumo` | How Lumo explains a mistake |
 
-To write your own program, make a new file ending in `.lumo` and run it with `.\lumo yourfile.lumo`.
+To write your own program, open the playground and start typing.
 
 
 ---
