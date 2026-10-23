@@ -76,6 +76,7 @@ These programs are in the [`examples`](examples) folder, and every one of them i
 | `examples/bounce.glimmo` | An animation: a bouncing ball you click to recolor |
 | `examples/catch.glimmo` | A complete game: catch falling stars with the arrow keys |
 | `examples/space.glimmo` | A space shooter built with kinds, with phone buttons |
+| `examples/maze.glimmo` | A maze drawn from rows of text, with animated coins |
 | `examples/pets.glimmo` | Kinds: pets with their own data and actions |
 | `examples/countdown.glimmo` | Timers: a countdown with `every` and `after` |
 | `examples/tour.glimmo` | Every feature, one after another |
@@ -524,6 +525,39 @@ make draw
 end
 ```
 
+**Levels made of text.** Draw a level as rows of text, one symbol for each tile. `draw_tiles` turns each symbol into a color, an emoji, or a picture file. Symbols that aren't in the record are left empty, so use a space or a dot for open ground:
+
+```
+set level to [
+    "##########",
+    "#..*...*.#",
+    "#..####..#",
+    "##########",
+]
+set looks to {"#": "brown", ".": "sky blue", "*": "⭐"}
+
+make draw
+    draw_tiles(level, 40, looks)             # each tile is 40 by 40
+end
+```
+
+`tile_at(level, x, y, 40)` gives the symbol at a spot on the screen, like `"#"`, or `""` outside the level. Check it before moving, so walls stop the player:
+
+```
+if tile_at(level, x + 5, y, 40) is not "#" then add 5 to x
+```
+
+To scroll a level bigger than the screen, give both the same left and top: `draw_tiles(level, 40, looks, -camera_x, 0)` and `tile_at(level, x, y, 40, -camera_x, 0)`.
+
+**Animation.** `frame(list, per_second)` gives the picture to show right now, moving through the list that many times a second. Use it anywhere a picture goes:
+
+```
+sprite(frame(["🐤", "🐥"], 4), x, y, 48)
+picture(frame(["run1.png", "run2.png", "run3.png"], 10), x, y)
+```
+
+The Maze game (`examples/maze.glimmo`) uses all three.
+
 **Phones and tablets.** On a touch screen, a game shows big on-screen buttons for the keys it uses, like ◀ ▶ and Space. You don't need to do anything: Glimmo works out which keys your game listens for.
 
 To share a game, run `glimmo build mygame.glimmo`. You get `mygame.html`, one file that anyone can open in a browser to play, with nothing to install.
@@ -579,6 +613,7 @@ end
 | `serve(f, port)` | run a website |
 | `screen`, `background`, `circle`, `rectangle`, `line`, `triangle`, `draw_text`, `sprite`, `picture` | drawing |
 | `key_down`, `mouse_x`, `mouse_y`, `mouse_down`, `beep`, `stop_game`, `distance`, `rgb` | games |
+| `draw_tiles`, `tile_at`, `frame` | levels made of text, and animation |
 | `arguments` | the command-line inputs |
 | `every(seconds, f)`, `after(seconds, f)`, `cancel(timer)` | timers |
 | `remember(name, value)`, `recall(name, fallback)`, `forget(name)` | keep values for next time |

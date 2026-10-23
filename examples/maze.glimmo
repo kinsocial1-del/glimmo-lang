@@ -1,0 +1,85 @@
+# Maze Run! Collect every coin with the arrow keys.
+# The maze is drawn from the rows of text below: # is a wall, * is a coin, P is where you start.
+# Change the rows to make your own maze.
+
+screen(600, 440)
+
+set level to [
+    "###############",
+    "#*....#......*#",
+    "#.###.#.#####.#",
+    "#.#.......#...#",
+    "#.#.#####.#.#.#",
+    "#...#*....#.#*#",
+    "###.#.#####.#.#",
+    "#*..#.....*.#.#",
+    "#.#####.#####.#",
+    "#P...........*#",
+    "###############",
+]
+set tile to 40
+set looks to {"#": "dark slate blue", ".": "midnight blue", "*": "midnight blue", "P": "midnight blue"}
+set speed to 3
+
+# Find the coins and the start in the level
+set coins to []
+count row from 1 to length(level)
+    count col from 1 to length(level[row])
+        set spot to {x: col * tile - tile / 2, y: row * tile - tile / 2}
+        if level[row][col] is "*" then add spot to coins
+        if level[row][col] is "P" then set player to spot
+    end
+end
+set total to length(coins)
+set frames to 0
+
+# True when the mouse fits at x, y without touching a wall
+make free with x and y
+    for each corner in [[x - 13, y - 13], [x + 13, y - 13], [x - 13, y + 13], [x + 13, y + 13]]
+        if tile_at(level, corner[1], corner[2], tile) is "#" then give back false
+    end
+    give back true
+end
+
+# The middle of the path nearest to v, so turning corners is easy
+make middle with v
+    give back round((v - tile / 2) / tile) * tile + tile / 2
+end
+
+make step with dx and dy
+    if dx is not 0 then add max(-speed, min(speed, middle(player.y) - player.y)) to player.y
+    if dy is not 0 then add max(-speed, min(speed, middle(player.x) - player.x)) to player.x
+    if free(player.x + dx, player.y + dy)
+        add dx to player.x
+        add dy to player.y
+    end
+end
+
+make draw
+    draw_tiles(level, tile, looks)
+
+    if length(coins) is 0
+        draw_text("You found every coin in {round(frames / 60, 1)} seconds!", 70, 200, 28, "white")
+        give back nothing
+    end
+
+    add 1 to frames
+    if key_down("left") then step(-speed, 0)
+    if key_down("right") then step(speed, 0)
+    if key_down("up") then step(0, -speed)
+    if key_down("down") then step(0, speed)
+
+    set left_over to []
+    for each coin in coins
+        if distance(coin.x, coin.y, player.x, player.y) is less than 24
+            beep(990, 0.05)
+        otherwise
+            add coin to left_over
+            sprite(frame(["🪙", "✨"], 3), coin.x, coin.y, 26)
+        end
+    end
+    set coins to left_over
+
+    sprite(frame(["🐭", "🐁"], 4), player.x, player.y, 30)
+    draw_text("Coins: {total - length(coins)} of {total}", 12, 8, 20, "white")
+end
